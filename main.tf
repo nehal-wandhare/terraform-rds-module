@@ -1,8 +1,14 @@
 resource "aws_db_instance" "rds" {
-  allocated_storage = 20
-  engine            = "mysql"
-  instance_class    = var.instance_class
-  username          = var.username
-  password          = var.password
-  skip_final_snapshot = true
+  allocated_storage    = var.storage
+  engine               = var.engine
+  instance_class       = var.instance_class
+  username             = var.username
+  password             = var.password
+  db_name              = var.db_name
+  skip_final_snapshot  = true
+  publicly_accessible  = var.public_access
+
+  tags = {
+    Environment = var.environment
+  }
 }
